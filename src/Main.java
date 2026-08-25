@@ -9,52 +9,27 @@ public class Main {
         ArrayList<String> conceptos = new ArrayList<>();
         ArrayList<String> categorias = new ArrayList<>();
         ArrayList<Double> montos = new ArrayList<>();
-
-        conceptos.add("chetos");
-        conceptos.add("juguete");
-        conceptos.add("gas");
-        conceptos.add("Luz");
-
-        categorias.add("Comida");
-        categorias.add("Escuela");
-        categorias.add("Transporte");
-        categorias.add("Escuela");
-
-        montos.add(50.00);
-        montos.add(180.00);
-        montos.add(75.00);
-        montos.add(73.50);
-
-        mostrarResumen(conceptos, categorias, montos);
         }
 
-        public static double calcularTotal(ArrayList<Double> montos){
-
-            if (montos == null || montos.isEmpty()) {
-                return 0.0;
-            }
-
-            double total = 0.0;
-            for (int i = 0; i < montos.size(); i++) {
-                total += montos.get(i);
-            }
-            return total;
+    public static double calcularTotal(ArrayList<Double> montos) {
+        double total = 0.0;
+        for (double monto : montos) {
+            total += monto;
         }
+        return total;
+    }
 
-
-    public static int obtenerPosicionGastoMayor(ArrayList<Double> montos){
+    public static int obtenerPosicionGastoMayor(ArrayList<Double> montos) {
         if (montos == null || montos.isEmpty()) {
             return -1;
         }
 
         int posicion = 0;
-
         for (int i = 1; i < montos.size(); i++) {
             if (montos.get(i) > montos.get(posicion)) {
                 posicion = i;
             }
         }
-
         return posicion;
     }
 
