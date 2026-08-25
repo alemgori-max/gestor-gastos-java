@@ -8,9 +8,64 @@ public class Main {
        System.out.println("SISTEMA PERSONAL DE CONTROL DE GASTOS");
 
 
+        Scanner scanner = new Scanner(System.in);
         ArrayList<String> conceptos = new ArrayList<>();
         ArrayList<String> categorias = new ArrayList<>();
         ArrayList<Double> montos = new ArrayList<>();
+
+        int opcion = 0;
+
+        do {
+            // Título final acordado tras el conflicto
+            System.out.println("\n--- SISTEMA PERSONAL DE CONTROL DE GASTOS ---");
+            System.out.println("1. Registrar gasto");
+            System.out.println("2. Mostrar todos los gastos");
+            System.out.println("3. Calcular gasto total");
+            System.out.println("4. Mostrar gasto mayor");
+            System.out.println("5. Mostrar gastos por categoría");
+            System.out.println("6. Mostrar resumen semanal");
+            System.out.println("7. Salir");
+            System.out.print("Seleccione una opción: ");
+
+            opcion = scanner.nextInt();
+            scanner.nextLine(); // Limpiar el escáner
+
+            switch (opcion) {
+                case 1:
+                    registrarGasto(conceptos, categorias, montos, scanner);
+                    break;
+                case 2:
+                    mostrarGastos(conceptos, categorias, montos);
+                    break;
+                case 3:
+                    System.out.println("\nGasto Total: $" + calcularTotal(montos));
+                    break;
+                case 4:
+                    int posMayor = obtenerPosicionGastoMayor(montos);
+                    if (posMayor != -1) {
+                        System.out.println("\nGasto mayor: " + conceptos.get(posMayor) + " | $" + montos.get(posMayor));
+                    } else {
+                        System.out.println("\nTodavía no hay gastos registrados.");
+                    }
+                    break;
+                case 5:
+                    System.out.print("\nEscribe el nombre de la categoría a buscar (ej. Alimentos, Transporte): ");
+                    String catBusqueda = scanner.nextLine();
+                    double totalCat = calcularTotalPorCategoria(categorias, montos, catBusqueda);
+                    System.out.println("Total gastado en " + catBusqueda + ": $" + totalCat);
+                    break;
+                case 6:
+                    mostrarResumen(conceptos, categorias, montos);
+                    break;
+                case 7:
+                    System.out.println("\nPrograma terminado. ¡Hasta luego!");
+                    break;
+                default:
+                    System.out.println("\nOpción no válida. Intenta de nuevo.");
+            }
+        } while (opcion != 7);
+
+        scanner.close();
         }
 
     public static double calcularTotal(ArrayList<Double> montos) {
