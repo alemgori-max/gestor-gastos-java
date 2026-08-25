@@ -5,7 +5,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        System.out.println("Gestor semanal de gastos");
+       System.out.println("SISTEMA PERSONAL DE CONTROL DE GASTOS");
 
 
         ArrayList<String> conceptos = new ArrayList<>();
