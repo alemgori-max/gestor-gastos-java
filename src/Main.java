@@ -5,7 +5,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-        System.out.println("CONTROL PERSONAL DE GASTOS");
+        System.out.println("CONTROL PERSONAL DE LOS GASTOS");
 
 
         ArrayList<String> conceptos = new ArrayList<>();
